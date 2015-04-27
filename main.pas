@@ -1,6 +1,7 @@
 program BuberMSU;
 { ************************************************************************
-  * File_Name		: BuberMSU.pas
+  * Project Name	: buberMSU
+  * File_Name		: Main.pas
   * Auhtor			: S Hafizh R Harsono
 					  M Andika S
 					  Fitrah Bima N
