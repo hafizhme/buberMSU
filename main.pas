@@ -46,6 +46,7 @@ begin
 	end
 	else if ( sms_user <> 0 ) then
 	begin
+		// KERJAIN YANG INI!!!!! <<<<------------------------<<<<<<<------------------<<<<<<<<<----
 		// membaca format
 		// ada tiga kemungkinan
 		// baca dengan mesin karakter
