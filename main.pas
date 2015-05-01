@@ -46,12 +46,12 @@ begin
 	end
 	else if ( sms_user <> 0 ) then
 	begin
-		// masuk ke format
-		.
-		.
-		.
-		readln;
-		User();
+		// membaca format
+		// ada tiga kemungkinan
+		// baca dengan mesin karakter
+		// outputkan ke layar
+		// penyimpanan ke file biar hafizh aja yang ngerjain kalau bingung
+		
 	end;
 
 end;
