@@ -1,7 +1,6 @@
 program BuberMSU;
 { ************************************************************************
-  * Project Name	: buberMSU
-  * File_Name		: Main.pas
+  * File_Name		: BuberMSU.pas
   * Auhtor			: S Hafizh R Harsono
 					  M Andika S
 					  Fitrah Bima N
@@ -13,27 +12,68 @@ program BuberMSU;
 					  interface that simulate user as participant,
 					  admin as one who can look for its participant
 ************************************************************************** }
+uses crt;
+
+var
+	x: Integer;
+	sms_user : string;
+
+procedure Select_Mode();
+begin
+	writeln('============BuberMSU=============');
+	writeln('---------------------------------');
+	writeln('Pilih Mode : ');
+	writeln('1. User    --> masuk sebagai pendaftar buber');
+	writeln('2. Admin   --> masuk sebagai admin');
+	writeln('0. Exit');
+	writeln;
+	write('Pilihan anda : ');read(x);
+end;
+
+procedure Admin();
+begin
+	
+end;
+
+procedure User();
+begin
+	clrscr;
+	writeln('1. bantuan | 0. keluar');
+	write('Pesan SMS : ');	readln(sms_user);
+	if ( sms_user = 1 ) then
+	begin
+		// tampilkan format daftar, update, delete
+	end
+	else if ( sms_user <> 0 ) then
+	begin
+		// masuk ke format
+		.
+		.
+		.
+		readln;
+		User();
+	end;
+
+end;
 
 procedure Main();
 begin
-	repeat
-		Select_Menu();
-		if x = 1 then
-			User()
-
-		else if x = 2 then
-			Admin()
-
-		else if x <> 0 then 
-		begin
-			writeln('Please input correct menu!!');
-			writeln('Try Again!!');
-			readln;
-			Main();
-		end;
-		
-	until x = 0;
+	clrscr;
+	Select_Mode();
+	if x = 1 then
+		User()
+	else if x = 2 then
+		Admin()
+	else if x <> 0 then 
+	begin
+		writeln('Please input correct menu!!');
+		writeln('Try Again!!');
+		readln;
+		Main();
+	end;	
 end;
+
+
 
 begin
 	Main();
