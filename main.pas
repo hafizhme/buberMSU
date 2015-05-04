@@ -18,6 +18,7 @@ var
 	x: Integer;
 	sms_user : string;
 
+
 procedure Select_Mode();
 begin
 	writeln('============BuberMSU=============');
@@ -32,27 +33,42 @@ end;
 
 procedure Admin();
 begin
-	
+	// blabla
+	writeln;
 end;
 
 procedure User();
 begin
 	clrscr;
-	writeln('1. bantuan | 0. keluar');
+	writeln('1. bantuan | 9. menu sebelumnya | 0. keluar');
 	write('Pesan SMS : ');	readln(sms_user);
-	if ( sms_user = 1 ) then
+	if ( sms_user = '1' ) then
 	begin
-		// tampilkan format daftar, update, delete
+		writeln('----PENGGUNAAN aplikasi buberMSU');
+		writeln;
+		writeln('buber reg');
+		writeln('	pendaftaran diri');
+		writeln('		buber reg#nama#jeniskelamin(l/p)#');
+		writeln('buber ccl');
+		writeln('	pengunduran diri');
+		writeln('		buber ccl#nomor_urut#');
+		writeln('buber upd');
+		writeln('	perubahan data diri');
+		writeln('		buber upd#nomor_urut#nama#jeniskelamin(l/p)#');
+		writeln;
+		writeln('tekan ENTER untuk melanjutan');
+		readln;
+		User();
 	end
-	else if ( sms_user <> 0 ) then
+	else if ( sms_user = '9' ) then
 	begin
-		// KERJAIN YANG INI!!!!! <<<<------------------------<<<<<<<------------------<<<<<<<<<----
-		// membaca format
-		// ada tiga kemungkinan
-		// baca dengan mesin karakter
-		// outputkan ke layar
-		// penyimpanan ke file biar hafizh aja yang ngerjain kalau bingung
-		
+		writeln('belum tahu');
+	end
+	else if ( sms_user <> '0' ) then
+	begin
+		// masuk ke format
+		readln;
+		User();
 	end;
 
 end;
@@ -73,8 +89,6 @@ begin
 		Main();
 	end;	
 end;
-
-
 
 begin
 	Main();
