@@ -6,7 +6,7 @@ program BuberMSU;
 					  Fitrah Bima N
 					  Medina Diana N
   * Date Start		: 22 April 2015
-  * Date Release	: .. ..... ....
+  * Date Release	: 6 Mei 2015
   * Description		: To provide registration BuberMSU registration
 					  via sms.Please note that we have user and admin
 					  interface that simulate user as participant,
