@@ -32,7 +32,7 @@ procedure Admin_Lihat();
 {I.S.	: blank}
 {F.S.	: ditampilkan isi dari array p}
 begin
-	for i := 1 to j do
+	for i := 1 to k do
 	writeln(p[i].nu,' ',p[i].nm,'	',p[i].jk);
 end;
 
@@ -47,10 +47,10 @@ begin
 	write('Masukkan nama yang dicari : ');
 	readln(nama);
 	writeln;
-	writeln('Hasil Pencarian');
+	writeln('Hasil Pencarian :');
 	z := 0;
 
-	for i := 1 to j do
+	for i := 1 to k do
 	if p[i].nm = nama then
 	begin
 		z := z + 1;
@@ -72,10 +72,11 @@ begin
 	writeln(fout,'DAFTAR PESERTA BUBER MSU hari ini');
 	writeln(fout);
 	writeln(fout,'putra	:');
-	for i := 1 to j do
+	for i := 1 to k do
 	if p[i].jk = 'l' then
 	begin
-		writeln(fout,p[i].nu,'.	',p[i].nm);
+		if p[i].nu <> 0 then
+		writeln(fout,'  ',p[i].nu,'.	',p[i].nm);
 	end;
 
 	writeln(fout);
@@ -83,10 +84,13 @@ begin
 	for i := 1 to j do
 	if p[i].jk = 'p' then
 	begin
-		writeln(fout,p[i].nu,'.	',p[i].nm);
+		if p[i].nu <> 0 then
+		writeln(fout,'  ',p[i].nu,'.	',p[i].nm);
 	end;
 
 	close(fout);
+
+	writeln('Pencetakan berhasil!!');
 end;
 
 procedure Admin();
@@ -121,7 +125,7 @@ begin
 	else if ( x = 3 ) then
 		begin
 			clrscr;
-			writeln('Admin_Cetak()');
+			Admin_Cetak();
 			readln;
 			Admin();
 		end
@@ -181,13 +185,48 @@ begin
 		z := z + 1;
 	end;
 
-	
+	p[z].nu := 0;
+	p[z].nm := '--';
+	p[z].jk := '-';
 
 end;
 
 procedure User_Update();
+{I.S.	: diperoleh format update data}
+{F.S.	: dicari nomor urut peserta, diassign ulang data peserta}
+var
+	nomor : Integer;
+	setring : string;
+	z : integer;
 begin
-	
+	setring := '';
+	i := i + 1;
+	while user_sms[i] <> '#' do
+	begin
+		setring := setring + user_sms[i];
+		i := i + 1;
+	end;
+	nomor := StrToInt(setring);
+
+	z := 1;
+	while p[z].nu <> nomor do
+	begin
+		z := z + 1;
+	end;
+
+	p[z].nm := '';
+	p[z].jk := '-';
+
+	i := i + 1;
+	while user_sms[i] <> '#' do
+	begin
+		p[z].nm := p[z].nm + user_sms[i];
+		i := i + 1;
+	end;
+
+	i := i + 1;
+	p[z].jk := user_sms[i];
+
 end;
 
 procedure User_Format();
@@ -207,7 +246,7 @@ begin
 	if ( key = 'buberr') then
 		begin
 			User_Daftar();
-			writeln('Selamat PENDAFTARAN berhasil');
+			writeln('Selamat PENDAFTARAN berhasil, nomor urut anda adalah ',p[k].nu);
 		end
 	else if ( key = 'buberc' ) then
 		begin
