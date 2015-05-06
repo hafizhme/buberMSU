@@ -250,6 +250,7 @@ procedure User_Format();
 {F.S.	: sms dialihkan ke pemrosesan tergantung pada
 		  format sms yang dipakai}
 begin
+	user_sms := user_sms + '###';
 	i := 1;
 	key := '';
 
