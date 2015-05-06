@@ -31,7 +31,22 @@ var
 procedure Admin_Lihat();
 {I.S.	: blank}
 {F.S.	: ditampilkan isi dari array p}
+var
+	x,y: integer;
+	tmp : peserta;
 begin
+	for x := 2 to k do
+	begin
+		tmp.nu := p[x].nu;	tmp.nm := p[x].nm;	tmp.jk := p[x].jk;
+		y := x;
+		while ( y > 1 ) and ( tmp.nu < p[y-1].nu ) do
+		begin
+			p[y].nu := p[y-1].nu;	p[y].nm := p[y-1].nm;	p[y].jk := p[y-1].jk;
+			y := y-1;
+		end;
+		p[y].nm := tmp.nm;	p[y].nu := tmp.nu;	p[y].jk := tmp.jk;
+	end;
+
 	for i := 1 to k do
 	writeln(p[i].nu,' ',p[i].nm,'	',p[i].jk);
 end;
@@ -40,7 +55,7 @@ procedure Admin_Cari();
 {I.S.	: user diminta memasukkan sebuah nama}
 {F.S.	: ditampilkan peserta bernama tersebut}
 var
-	nama: char;
+	nama: string;
 	z : integer;
 begin
 	clrscr;
@@ -51,15 +66,16 @@ begin
 	z := 0;
 
 	for i := 1 to k do
-	if p[i].nm = nama then
-	begin
-		z := z + 1;
-		writeln(p[i].nu,' ',p[i].nm,'	',p[i].jk);
-	end;
+		if p[i].nm = nama then
+			begin
+				z := z + 1;
+				writeln(p[i].nu,' ',p[i].nm,'	',p[i].jk);
+			end;
+
 	if z = 0 then
-	writeln('Hasil pencarian tidak ditemukan')
+		writeln('Hasil pencarian tidak ditemukan')
 	else
-	writeln('Jumlah hasil pencarian sebanyak ',z);
+		writeln('Jumlah hasil pencarian sebanyak ',z);
 end;
 
 procedure Admin_Cetak();
